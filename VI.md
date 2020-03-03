@@ -8,7 +8,7 @@
   - [Deletes](#deletes)
   - [Changes](#changes)
   - [Copy / Paste](#copy--paste)
-  - [Substitutions](#substitution)
+  - [Substitutions](#substitutions)
   - [Registers](#registers)
   - [Regular Expresions](#regular-expressions)
   - [Files](#files)
