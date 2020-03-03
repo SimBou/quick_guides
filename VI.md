@@ -1,5 +1,19 @@
 # VI Editor
 
+## Table of Contents
+  - [Moves](VI.md/#moves)
+  - [Finds](VI.mg/#finds)
+  - [Inserts](VI.md/#inserts)
+  - [Deletes](VI.md/#deletes)
+  - [Changes](VI.md/#changes)
+  - [Copy / Paste](VI.md/#copy--paste)
+  - [Substitutions](VI.md/#substitution)
+  - [Registers](VI.md/#registers)
+  - [Regular Expresions](VI.md/#regular-expressions)
+  - [Files](VI.md/#files)
+  - [Quit](VI.md/#quit)
+
+
     START VI AND EDIT FILE "FILENAME"                       vi filename
 
 ## Moves
