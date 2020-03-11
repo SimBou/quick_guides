@@ -1,6 +1,7 @@
 # Quick Guides
 Table of Contents
 
-- [VI Editor](VI.md)
+- [VI Editor](vi.md)
+- [Self Extract Script](self.md)
 - [Other](#other)
 
