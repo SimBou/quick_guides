@@ -1,9 +1,9 @@
 # Create a self-extract installer
 
 ## Table of Contents
-  - [Create archive file](#archive)
-  - [Create installation script](#script)
-  - [Create self-extract script](#selfextract)
+  - [Create archive file](#create-archive-file--archivetgz)
+  - [Create installation script](#create-installation-script--my_scriptbash)
+  - [Create self-extract script](#create-self-extract-script--selfextractbsx)
   - [Reference](#reference)
 
 ## Create archive file : archive.tgz
