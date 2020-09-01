@@ -130,9 +130,11 @@
     OPEN MULTIPLE FILES HORIZONTALY SPLITED                 -o
     OPEN MULTIPLE FILEs VERTICALY SPLITED                   -O
     QUIT ALL FILES                                          :qa
-    SPLIT HORIZONTALY                                       :split
-    SPLIT VERTICALY                                         :vsplit
-
+    SPLIT CURRENT WINDOWS HORIZONTALY                       :split
+    SPLIT CURRENT WINDOWS VERTICALY                         :vsplit
+    SPLIT MULTIPLE OPEN FILE HORIZONTALY                    :ba
+    SPLIT MULTIPLE OPEN FILE VERTICALY                      :vert ba
+    MOVING TO WINDOWS                                       Ctrl+W directions
 
 ## Quit
 
