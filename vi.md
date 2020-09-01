@@ -125,6 +125,15 @@
     SET OPTION                                              :set <option>
     UNSET OPTION                                            :set no<option>
     
+## Multiple files
+
+    OPEN MULTIPLE FILES HORIZONTALY SPLITED                 -o
+    OPEN MULTIPLE FILEs VERTICALY SPLITED                   -O
+    QUIT ALL FILES                                          :qa
+    SPLIT HORIZONTALY                                       :split
+    SPLIT VERTICALY                                         :vsplit
+
+
 ## Quit
 
     QUIT WITHOUT SAVING                                     :q!
