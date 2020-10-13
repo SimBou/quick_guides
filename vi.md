@@ -1,5 +1,4 @@
 # VI Editor
-
 ## Table of Contents
   - [Start](#start)
   - [Moves](#moves)
@@ -13,11 +12,8 @@
   - [Regular Expresions](#regular-expressions)
   - [Files](#files)
   - [Quit](#quit)
-
 ## Start
-
     START VI AND EDIT FILE "FILENAME"                       vi filename
-
 ## Moves
     MOVE LEFT                                               h
     MOVE DOWN                                               j
@@ -35,22 +31,16 @@
     GO BACKWARD A WORD, COUNTING PUNCTUATION                b
     GO FORWARD A WORD, NOT COUNTING PUNCTUATION             W
     GO BACKWARD A WORD, NOT COUNTING PUNCTUATION            B
-
 ## Finds
-
     FIND "SOMETHING" FROM CURRENT LOCATION FORWARD          / something
     FIND "SOMETHING" FROM CURRENT LOCATION BACKWARD         ? something
     REPEAT LAST FIND                                        n 
-
 ## Inserts
-
     INSERT TEXT IN FRONT OF CURSOR                          i
     INSERT TEXT AT BEGINNING OF CURRENT LINE                I
     INSERT TEXT AFTER CURSOR (APPEND)                       a
     INSERT TEXT AT END OF CURRENT LINE                      A
-	
 ## Deletes
-	
     DELETE CHARACTER AT THE CURSOR                          x
     DELETE CHARACTER TO THE LEFT OF THE CURSOR              X
     DELETE TO END OF LINE FROM CURSOR                       d$
@@ -62,9 +52,7 @@
     DELETE CURRENT WORD, COUNTING PUNCTUATION               dw
     DELETE FROM BEGINNING OF FILE TO CURSOR                 d1G
     DELETE LINES 1 TO 4                                     :1,4 d 
-    
 ## Changes
-    
     CHANGE CURRENT WORD, COUNTING PUNCTUATION               cw
     CHANGE TO END OF LINE                                   C
     CHANGE CURRENT LINE (entirely)                          cc 
@@ -74,9 +62,7 @@
     TRANSPOSE CHARACTER CURSOR AND CHARACTER TO RIGHT       xp
     UNDO LAST CHANGE                                        u
     UNDO ALL CHANGES TO CURRENT LINE                        U
-
 ## Copy / Paste
-	
     COPY CURRENT LINE                                       yy
     COPY CURRENT WORD                                       yw
     COPY TO THE END OF LINE                                 Y	
@@ -85,22 +71,16 @@
     PASTE COPIED/CUT LINE ABOVE CURRENT LINE                P
     COPY LINES 1-2 AND PUT AFTER LINE 3                     :1,2 co 3 
     MOVE LINES 4-6 AND PUT AFTER LINE 7                     :4,6 m 7
-
 ## Substitutions
-
     REPLACE (the 1st) s1 IN THIS LINE BY s2                 :s/s1/s2
     REPLACE ALL INSTANCES OF s1 BY s2 IN THE FILE           :%s/s1/s2/g
-
 ## Registers
-
     MARK BEGINNING OF BLOCK "b"                             mb
     DELETES A WORD INTO REGISTER a                          "adw
     COPY BLOCK FROM MARKER "b" TO CURSOR INTO REGISTER "a"  "ay'b
     PASTE REGISTER "a"                                      "ap
     DELETE EVERYTHING FROM THE MARKED POSITION TO HERE      d`b
-    
 ## Regular Expressions
-
     ANY SINGLE CHARACTER EXCEPT NEWLINE                     . (dot)
     ZERO OR MORE REPEATS                                    *
     ANY CHARACTER IN SET                                    [...]
@@ -109,9 +89,7 @@
     BEGINNING, END OF WORD                                  \< , \>
     GROUPING                                                \(. . . \)
     CONTENTS OF nth GROUPING                                \n
-    
 ## Exec Mode
-
     WRITE FILE (current file if no name given)              :w file
     APPEND FILE (current file if no name given)             :w >>file
     INSERT (read) FILE AFTER LINE                           :r file
@@ -124,9 +102,7 @@
     SHOW ALL OPTIONS                                        :set all
     SET OPTION                                              :set <option>
     UNSET OPTION                                            :set no<option>
-    
 ## Multiple files
-
     OPEN MULTIPLE FILES HORIZONTALY SPLITED                 -o
     OPEN MULTIPLE FILEs VERTICALY SPLITED                   -O
     QUIT ALL FILES                                          :qa
@@ -135,11 +111,8 @@
     SPLIT MULTIPLE OPEN FILE HORIZONTALY                    :ba
     SPLIT MULTIPLE OPEN FILE VERTICALY                      :vert ba
     MOVING TO WINDOWS                                       Ctrl+W directions
-
 ## Quit
-
     QUIT WITHOUT SAVING                                     :q!
     SAVE AND QUIT                                           :wq
     SAVE                                                    :w
     SAVE AS "NAME"                                          :w name
-
