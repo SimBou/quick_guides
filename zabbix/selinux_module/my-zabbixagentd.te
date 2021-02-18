@@ -1,0 +1,17 @@
+
+module my-zabbixagentd 1.0;
+
+require {
+	type initctl_t;
+	type devlog_t;
+	type zabbix_agent_t;
+	type proc_kcore_t;
+	class fifo_file getattr;
+	class sock_file getattr;
+	class file getattr;
+}
+
+#============= zabbix_agent_t ==============
+allow zabbix_agent_t devlog_t:sock_file getattr;
+allow zabbix_agent_t initctl_t:fifo_file getattr;
+allow zabbix_agent_t proc_kcore_t:file getattr;

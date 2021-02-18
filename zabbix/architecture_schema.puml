@@ -1,0 +1,102 @@
+@startuml
+!define osaPuml https://raw.githubusercontent.com/Crashedmind/PlantUML-opensecurityarchitecture2-icons/master
+!include osaPuml/Common.puml
+!include osaPuml/Server/all.puml
+!include osaPuml/Hardware/all.puml
+!include osaPuml/Misc/all.puml
+!include osaPuml/Site/all.puml
+!include osaPuml/User/all.puml
+
+'listsprites
+
+hide stereotype
+
+' Zabbix Core
+rectangle "Zabbix Core \n Cluster corosync/pacemaker" as clustercore {
+interface "Flotting IP address" as ip_core
+osa_server_monitor(core1, "Zabbix Server", "Core 1",)
+osa_server_monitor(core2, "Zabbix Server", "Core 2",)
+osa_server(quorumcore, "Server", "Quorum",)
+}
+core1 - core2 : TCP 2224/3121/5403 \n UDP 5404/5405
+core2 - quorumcore : TCP 2224/3121/5403 \n UDP 5404/5405
+ip_core -down- core1
+ip_core .down. core2
+
+' Zabbix Proxy
+osa_server_proxy(proxy1, "Zabbix Proxy", "Proxy 1",)
+osa_server_proxy(proxyN, "Zabbix Proxy", "Proxy N",)
+osa_firewall(firewall1, "Firewall", "Firewall 1",)
+osa_firewall(firewallN, "Firewall", "Firewall N",)
+
+' PostgreSQL
+rectangle "PostgreSQL Streaming Replication \n Cluster corosync/pacemaker" as clusterstreaming {
+interface "Flotting IP address" as ip_pg
+osa_server_database(db1, "PostgreSQL", "Master",)
+osa_server_database(db2, "PostgreSQL", "Slave",)
+osa_server(quorumpg, "Server", "Quorum",)
+}
+db1 -right-> db2 : TCP 5432/2224/3121/5403 \n UDP 5404/5405
+db2 - quorumpg : TCP 2224/3121/5403 \n UDP 5404/5405
+ip_pg -down- db1
+ip_pg .down. db2
+
+' Frontend
+rectangle "Frontend/Grafana \n Cluster corosync/pacemaker" as clusterfrontend {
+interface "Flotting IP address" as ip_web
+osa_server_web(web1, "Zabbix Frontend/Grafana", "Server 1",)
+osa_server_web(web2, "Zabbix Frontend/Grafana", "Server 2",)
+osa_server(quorumweb, "Server", "Quorum",)
+}
+web1 - web2 : TCP 2224/3121/5403 \n UDP 5404/5405
+web2 - quorumweb : TCP 2224/3121/5403 \n UDP 5404/5405
+ip_web -down- web1
+ip_web .down. web2
+
+' Grafana
+'rectangle "Grafana \n Cluster corosync/pacemaker" as clustergrafana {
+'interface "Flotting IP address" as ip_grafana
+'osa_server_application(grafana1, "Grafana", "Server 1",)
+'osa_server_application(grafana2, "Grafana", "Server 2",)
+'osa_server(quorumgrafana, "Server", "Quorum",)
+'}
+'grafana1 - grafana2 : TCP 2224/3121/5403 \n UDP 5404/5405
+'grafana2 - quorumgrafana : TCP 2224/3121/5403 \n UDP 5404/5405
+'ip_grafana -down- grafana1
+'ip_grafana .down. grafana2
+
+' Equipments
+rectangle "Equipements 1" as equipements1 {
+osa_hub(hub1, "Hubs", "Hub 1",)
+osa_server(server1, "Servers", "Server 1",)
+osa_device_wireless_router(router1, "Routers", "Router 1",)
+}
+rectangle "Equipements N" as equipementsN {
+osa_hub(hubN, "Hubs", "Hub N",)
+osa_server(serverN, "Servers", "Server N",)
+osa_device_wireless_router(routerN, "Routers", "Router N",)
+}
+
+' User
+osa_user_green_operations(user, "User", "IT Team", "Zabbix User")
+
+proxy1 --> firewall1 : TCP 10050/10051
+firewall1 --> ip_core : TCP 10050/10051
+proxyN --> firewallN : TCP 10050/10051
+firewallN --> ip_core : TCP 10050/10051
+
+equipements1 <--> proxy1 : TCP 10050/10051 \n TCP 161/162
+equipementsN <--> proxyN : TCP 10050/10051 \n TCP 161/162
+
+ip_web -down-> ip_pg : TCP 5432
+ip_core --> ip_pg : TPC 10050/10051 \n TCP 5432
+ip_web -> ip_web : TCP 80/443
+'ip_grafana -down-> ip_pg : TCP 5432
+'ip_grafana -down-> ip_web : TCP 80/443
+
+user --> ip_web : TCP 80/443
+'user -> ip_grafana : TCP 80/443
+
+footer %filename() rendered with PlantUML version %version()\nThe Hitchhiker’s Guide to PlantUML
+@enduml
+listsprites

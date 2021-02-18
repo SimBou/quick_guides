@@ -5,5 +5,6 @@ Table of Contents
 - [Tmux](tmux.md)
 - [SNMP](snmp.md)
 - [Certificates](certificates.md)
+- [Zabbix](zabbix.md)
 - [Other](#other)
 
