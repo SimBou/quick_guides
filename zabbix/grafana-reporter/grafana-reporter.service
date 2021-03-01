@@ -1,0 +1,16 @@
+[Unit]
+Description=Grafana Reporter API
+After=syslog.target
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/var/lib/grafana/grafana-reporter/launch-grafana-reporter start
+ExecStop=/var/lib/grafana/grafana-reporter/launch-grafana-reporter stop
+PIDFile=/run/grafana/grafana-reporter.pid
+Restart=on-failure
+User=grafana
+Group=grafana
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,26 @@
+#!/bin/bash
+
+confFile=/var/lib/grafana/grafana-reporter/grafana-reporter.conf
+binFile=/var/lib/grafana/grafana-reporter/go/bin/grafana-reporter
+
+logFile=/var/log/grafana/grafana-reporter.log
+pidFile=/run/grafana/grafana-reporter.pid
+
+IP=$(cat $confFile | grep -e "^ip=" | awk -F"=" '{print $2}')
+PROTO=$(cat $confFile | grep -e "^proto=" | awk -F"=" '{print $2}')
+SSL_CHECK=$(cat $confFile | grep -e "^ssl-check" | awk -F"=" '{print $2}')
+
+start() {
+  ${binFile} -ip $IP -proto $PROTO -ssl-check=$SSL_CHECK 2>&1 > ${logFile} &
+  jobs -p > ${pidFile}
+}
+
+stop() {
+  PID=$(cat ${pidFile})
+  kill -SIGTERM ${PID}
+}
+
+case $1 in
+  start|stop) "$1" ;;
+esac
+

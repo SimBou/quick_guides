@@ -1,4 +1,4 @@
-# Zabbix Frontend (Apache or Nginx) [\<back>](README.md)
+# Zabbix Frontend (Apache or Nginx) [\<back>](zabbix.md)
 Table of contents
 - [Install packages](#install-packages-on-both-nodes-as-root)
 - [Configure security](#configure-security-on-both-nodes-as-root)

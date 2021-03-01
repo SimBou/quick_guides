@@ -1,8 +1,6 @@
-# Grafana [\<back>](README.md)
+# Grafana [\<back>](zabbix.md)
 Table of contents
 - [Install packages](#install-packages-on-both-nodes-as-root)
-- [Configure security](#configure-security-on-both-nodes-as-root)
-- [Configure Zabbix](#configure-zabbix-on-both-nodes-as-root)
 - [Configure Cluster](#configure-cluster)
 ## Install packages (on both nodes as root)
 1) Install Grafana repos

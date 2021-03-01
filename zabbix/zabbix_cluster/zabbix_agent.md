@@ -1,4 +1,4 @@
-# Zabbix Agent [\<back>](README.md)
+# Zabbix Agent [\<back>](zabbix.md)
 Table of contents
 - [Install packages](#install-packages-on-both-nodes-as-root)
 - [Configure security](#configure-security-on-both-nodes-as-root)

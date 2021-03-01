@@ -1,4 +1,4 @@
-# PostgreSQL [\<back>](README.md)
+# PostgreSQL [\<back>](zabbix.md)
 Table of contents
 - [Install packages](#install-packages-on-both-nodes-as-root)
 - [Configure Master](#configure-master-on-master-node-as-root)
