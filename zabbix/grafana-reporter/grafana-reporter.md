@@ -1,7 +1,8 @@
 # GRAFANA REPORTER
 ## Table of Contents
-  - [Zabbix 5.0 HA with PostgreSQL 12 Streaming replication](zabbix/zabbix_cluster/zabbix.md)
-  - [SQL](zabbix/sql.md)
+  - [Installation](#installation)
+  - [Startup API configuration](#startup-api-service-configuration)
+  - [References](#references)
 ## Installation
 ### Prerequisites Centos
 ```commandline
@@ -48,4 +49,5 @@ launch-grafana-reporter
 
 ## References
 https://grafana.com/grafana/plugins/grafana-image-renderer/installation
+
 https://github.com/IzakMarais/reporter

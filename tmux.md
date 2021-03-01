@@ -13,4 +13,5 @@ tmux move-window -t 0
 ## Reference
 
 https://superuser.com/questions/343572/how-do-i-reorder-tmux-windows
+
 https://unix.stackexchange.com/questions/318281/how-to-copy-and-paste-with-a-mouse-with-tmux
