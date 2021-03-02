@@ -62,3 +62,21 @@ FROM hosts ho
   inner join history_str hi on hi.itemid=it.itemid
 WHERE ho.flags IN (0,4) AND ho.status IN (0,1) AND ho.snmp_available=1 AND it.key_='system.descr[sysDescr.0]' order by ho.hostid desc
 ```
+
+Get table space odered by size
+```jql
+SELECT N.nspname || '.' || C.relname AS "relation",
+CASE WHEN reltype = 0
+THEN pg_size_pretty(pg_total_relation_size(C.oid)) || ' (index)'
+ELSE pg_size_pretty(pg_total_relation_size(C.oid)) || ' (' || pg_size_pretty(pg_relation_size(C.oid)) || ' data)'
+END AS "size (data)",
+COALESCE(T.tablespace, I.tablespace, '') AS "tablespace"
+FROM pg_class C
+LEFT JOIN pg_namespace N ON (N.oid = C.relnamespace)
+LEFT JOIN pg_tables T ON (T.tablename = C.relname)
+LEFT JOIN pg_indexes I ON (I.indexname = C.relname)
+LEFT JOIN pg_tablespace TS ON TS.spcname = T.tablespace
+LEFT JOIN pg_tablespace XS ON XS.spcname = I.tablespace
+WHERE nspname NOT IN ('pg_catalog','pg_toast','information_schema')
+ORDER BY pg_total_relation_size(C.oid) DESC;
+```
