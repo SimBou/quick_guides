@@ -1,8 +1,10 @@
 # SNMP
 ## Table of Contents
-  - [Commands examples](#commands_examples)
-  - [Get](#reference)
-  - [Translate](#reference)
+  - [SnmpWalk](#snmpwalk)
+  - [SnmpGet](#snmpget)
+  - [SnmpTranslate](#snmptranslate)
+  - [SnmpTable](#snmptable)
+  - [References](#reference)
 ## snmpwalk
 snmpwalk query via SNMPv1
 ```commandline
