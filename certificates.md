@@ -5,6 +5,7 @@
   - [Create certificate](#create-certificate)
   - [Display and check certificate](#display-and-check-certificate)
   - [Convert certificates](#convert-certificates)
+  - [Add certificate to java keystore](#add-certificate-to-java-keystore)
   - [References](#references)
 ## Create Private Key
 
@@ -103,6 +104,17 @@ openssl crl2pkcs7 -nocrl -certfile www.server.com.crt -out www.server.com.p7b
 Convert DER (.crt .cer ou .der) to PEM
 ```commandline
 openssl x509 -inform der -in certificate.cer -out certificate.pem
+```
+
+## Add certificate to java keystore
+Convert PEM to PKCS12
+```commandline
+openssl pkcs12 -export -in /etc/gitlab/ssl/__axelit_fr_ee.crt -inkey /etc/gitlab/ssl/__axelit_fr.key -name automation.axelit.fr -out __axelit_fr.p12
+```
+Import PKCS12 to KEYSTORE
+```commandline
+keytool -importkeystore -srckeystore __axelit_fr.p12 -srcstoretype PKCS12 -deststoretype pkcs12 -keystore keystore -keypass adminadmin -storepass adminadmin
+keytool -import -alias rundeck -trustcacerts -file wildcard.axelit.fr.ca -keystore keystore
 ```
 
 ## References
